@@ -26,6 +26,11 @@ class Metadata:
             "models": self.models
         }
 
+        # Load saved metadata from disk
+        if load is True:
+            self._load_metadata(self._data_filepath)
+
+
     def _generate_id(self, name: str) -> str:
         """Generate an MD5 hash from string
         """
