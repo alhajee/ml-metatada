@@ -105,5 +105,24 @@ class Metadata:
 
 
     def _load_metadata(self, path: str) -> None:
-        self.metadata = joblib.load(path)
+        try:
+            self.metadata = joblib.load(path)
+        except FileNotFoundError as e:
+            print("file not found: {}".format(path))
 
+
+# Testing class
+metadata = Metadata(load=True)
+# metadata.log_model(
+#     {
+#         "name": "SVM Model",
+#         "version": "1.0.0",
+#         "path": "./models/",
+#         "score": 93.8,
+#         "inputs": [0, 0, 0]
+#     })
+
+# metadata.log_model("RNN Model", version="1.0.0", path="./models/", 
+#                     score=93.8, inputs= [0, 0, 0])
+
+print(metadata.metadata)
