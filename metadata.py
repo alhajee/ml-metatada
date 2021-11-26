@@ -25,3 +25,10 @@ class Metadata:
             "schema": self.schema,
             "models": self.models
         }
+
+    def _generate_id(self, name: str) -> str:
+        """Generate an MD5 hash from string
+        """
+        ID = hashlib.md5(name.encode('utf-8')).hexdigest()
+        return str(ID)
+
