@@ -8,6 +8,10 @@ class Metadata:
 
         # Directory of the raw data files
         self._data_root = './data'
+        
+        # Make directory if it doesn't exist
+        if not os.path.exists(self._data_root):
+            os.makedirs(self._data_root)
 
         # Full path of metadata
         self._data_filepath = os.path.join(self._data_root, "main.metadata")
