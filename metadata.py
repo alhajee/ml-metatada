@@ -60,6 +60,21 @@ class Metadata:
 
     def log_model(self, name: str, path: str=None, score:float=None, 
                 version: str=None, inputs: list=None) -> str:
+        """Add model data into metadata
+
+            Args:
+                name - model name
+                path - path of model in disk
+                score - score of model (Eg. Test-set Accuracy)
+                version - version of model
+                inputs - Expected format of model input
+
+            Returns:
+                ID - unique hash generated for the model
+            
+            Throws:
+                None - if name is not supplied
+        """
 
         if name is not None:
             ID = self._generate_id(name)
