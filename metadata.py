@@ -53,4 +53,31 @@ class Metadata:
         return ID
 
 
+    def log_model(self, name: str, path: str=None, score:float=None, 
+                version: str=None, inputs: list=None) -> str:
 
+        if name is not None:
+            ID = self._generate_id(name)
+            
+            model = dict()
+
+            model['name'] = name
+            model['version'] = version
+            model['path'] = path
+            model['score'] = score
+            model['inputs'] = inputs
+
+            # Put model data into models dictionary
+            self.models[ID] = model
+            # Save model dictionary into metadata
+            self.metadata["models"] = self.models
+
+            # Save metadata to disk
+            self._save_metadata(self.metadata, self._data_filepath)
+
+        else:
+            return None
+        return ID
+
+
+    
