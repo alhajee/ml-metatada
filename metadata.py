@@ -101,7 +101,7 @@ class Metadata:
 
 
     def _save_metadata(self, metadata, path: str) -> None:
-        joblib.dump(self.metadata, path)
+        joblib.dump(metadata, path)
 
 
     def _load_metadata(self, path: str) -> None:
