@@ -32,3 +32,25 @@ class Metadata:
         ID = hashlib.md5(name.encode('utf-8')).hexdigest()
         return str(ID)
 
+
+    def log_model(self, model: dict) -> str:
+        """Add model data into metadata
+        """
+        if model.get("name"):
+            print(model.get("name"))
+            ID = self.generate_ID(model.get("name"))
+        else:
+            return None
+
+        # Put model data into models dictionary
+        self.models[ID] = model
+        # Save model dictionary into metadata
+        self.metadata["models"] = self.models
+
+        # Save metadata to disk
+        self._save_metadata(self.metadata, self._data_filepath)
+
+        return ID
+
+
+
